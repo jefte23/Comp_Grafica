@@ -1,43 +1,52 @@
-from pygame import gfxdraw
-import sys,pygame
+from graphics import *
 
-pygame.init()
+# Function to put pixels a
+# at subsequence points
 
-screen = pygame.display.set_mode((400,400))
-screen.fill((0,0,0))
-pygame.display.flip()
+def drawCircle(xc, yc, x, y, win):
 
-def circle(radius,offset):
-	x,y = 0,radius
-	plotCircle(x,y,radius,offset)
+	pt = Point(xc + x, yc + y)
+	pt = Point(xc - x, yc + y)
+	pt = Point(xc + x, yc - y)
+	pt = Point(xc - x, yc - y)
+	pt = Point(xc + y, yc + x)
+	pt = Point(xc - y, yc + x)
+	pt = Point(xc + y, yc - x)
+	pt = Point(xc - y, yc - x)
+	pt.draw(win)
 
-def symmetry_points(x,y,offset):
-	gfxdraw.pixel(screen,x+offset,y+offset,(255,255,255))
-	gfxdraw.pixel(screen,-x+offset,y+offset,(255,255,255))
-	gfxdraw.pixel(screen,x+offset,-y+offset,(255,255,255))
-	gfxdraw.pixel(screen,-x+offset,-y+offset,(255,255,255))
-	gfxdraw.pixel(screen,y+offset,x+offset,(255,255,255))
-	gfxdraw.pixel(screen,-y+offset,x+offset,(255,255,255))
-	gfxdraw.pixel(screen,y+offset,-x+offset,(255,255,255))
-	gfxdraw.pixel(screen,-y+offset,-x+offset,(255,255,255))
-	pygame.display.flip()
 
-def plotCircle(x,y,radius,offset):
-	d = 5/4.0 - radius
-	symmetry_points(x,y,radius+offset)
-	while x < y:
-		if d < 0:
-			x += 1
-			d += 2*x + 1
+# Function for circle - generation
+# using Bresenham 's algorithm
+
+def circleBres(xc, yc, r):
+	x = 0
+	y = r
+	d = 3 - 2 * r;
+
+	#drawCircle(xc, yc, x, y);
+	while (y >= x):
+		++x
+
+		if (d > 0):
+			--y
+			d = d + 4 * (x - y) + 10
 		else:
-			x += 1
-			y -= 1
-			d += 2*(x-y) + 1
-		symmetry_points(x,y,radius+offset)
+			d = d + 4 * x + 6
+			drawCircle(xc, yc, x, y)
+			#delay(50)
 
-circle(100,25) # circle(radius,<offset from edge>)
-pygame.display.flip()
+def main():
+	xc = 50
+	yc = 50
+	r2 = 30
 
-while 1:
-	for event in pygame.event.get():
-		if event.type == pygame.QUIT: sys.exit()
+	win = GraphWin("My Window", 500, 500)
+	win.setBackground(color_rgb(240, 240, 240))
+
+	circleBres(xc, yc, r2, win)
+
+	win.getMouse()  # pause for click in window
+	win.close()
+
+main()
