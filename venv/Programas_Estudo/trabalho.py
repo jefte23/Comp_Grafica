@@ -54,10 +54,11 @@ def circulo(xc, yc, r, cor, win):
 # --------------------------------------------------------------
 
 def leituraDeArquivo():
-    wb = load_workbook('planilha\ de\ radar.xlsx')  # abrindo o Workbook test.xlsx
-    ws = wb['Plan1']  # selecionando a planilha 'Plan1' dentro do Workbook test.xlsx
+    wb = load_workbook('planilha de radar.xlsx')  # abrindo o Workbook test.xlsx
+    ws = wb['Planilha1']  # selecionando a planilha 'Plan1' dentro do Workbook test.xlsx
     for line in ws:  # iterando em todas as linhas da 'Plan1'
         print (line[0])  # print a primeira célula da linha
+        print
 
 
 # --------------------------------------------------------------
@@ -79,7 +80,7 @@ def main():
 
     #aviao(x1, y1, x2, y2)
 
-    #leituraDeArquivo()
+    leituraDeArquivo()
 
 
     # cliclar na tela para finalizar o programa
