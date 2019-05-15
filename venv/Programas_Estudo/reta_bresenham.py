@@ -34,20 +34,19 @@ def bresenham(x1, y1, x2, y2, cor, win):
 
 
 def main():
-    x1 = 120
-    x2 = 450
-    y1 = 100
+    x1 = 400
+    x2 = 400
+    y1 = 0
     y2 = 300
 
-    cor = color_rgb(153, 204, 50)
+    cor = color_rgb(0, 0, 0)
 
     # x1 = int(input("informe X inicial: "))
     # x2 = int(input("informe X final: "))
     # y1 = int(input("informe Y inicial: "))
     # y2 = int(input("informe Y final: "))
 
-    win = GraphWin("reta_Bresenham", 500, 500)
-    # win.setBackground(color_rgb(240, 240, 240))
+    win = GraphWin("reta_Bresenham", 800, 600)
 
     # Chava variavel de bresenham
     bresenham(x1, y1, x2, y2, cor, win)

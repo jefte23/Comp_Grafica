@@ -21,18 +21,18 @@ def drawDDA(x1,y1,x2,y2, win):
 
 def main():
 
-    x1 = 120
-    x2 = 450
-    y1 = 100
-    y2 = 300
+    x1 = 400
+    x2 = 400
+    y1 = 0
+    y2 = 600
 
     # x1 = int(input("informe X inicial: "))
     # x2 = int(input("informe X final: "))
     # y1 = int(input("informe Y inicial: "))
     # y2 = int(input("informe Y final: "))
 
-    win = GraphWin("My Window", 500, 500)
-    win.setBackground(color_rgb(240, 240, 240))
+    win = GraphWin("My Window", 800, 600)
+    #win.setBackground(color_rgb(240, 240, 240))
 
     # Chava variavel de bresenham
     drawDDA(x1, y1, x2, y2, win)
